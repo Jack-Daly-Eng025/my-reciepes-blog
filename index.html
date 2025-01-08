@@ -10,22 +10,30 @@
   <header>
     <h1>My Recipe Blog</h1>
   </header>
-  <main>
-    <ul id="recipe-list">
-      <!-- Recipes will be loaded here -->
-    </ul>
+  <main id="recipe-list">
+    <!-- Cards will be dynamically inserted here -->
   </main>
+  <footer>
+    <p>Made with 💜 by <a href="https://github.com/yourusername">Your Name</a></p>
+  </footer>
   <script>
     const recipes = [
-      { name: 'Chocolate Cake', file: 'chocolate-cake.md' },
-      { name: 'Vanilla Ice Cream', file: 'vanilla-ice-cream.md' }
+      { name: 'Chocolate Cake', file: 'chocolate-cake.md', description: 'Rich and moist chocolate cake recipe.' },
+      { name: 'Vanilla Ice Cream', file: 'vanilla-ice-cream.md', description: 'Creamy and smooth homemade ice cream.' },
+      { name: 'Pasta Primavera', file: 'pasta-primavera.md', description: 'Fresh and vibrant veggie pasta dish.' }
     ];
 
     const list = document.getElementById('recipe-list');
     recipes.forEach(recipe => {
-      const listItem = document.createElement('li');
-      listItem.innerHTML = `<a href="post.html?post=${recipe.file.replace('.md', '')}">${recipe.name}</a>`;
-      list.appendChild(listItem);
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <a href="post.html?post=${recipe.file.replace('.md', '')}">
+          <h2>${recipe.name}</h2>
+          <p>${recipe.description}</p>
+        </a>
+      `;
+      list.appendChild(card);
     });
   </script>
 </body>
