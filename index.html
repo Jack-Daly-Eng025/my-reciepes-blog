@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Recipe Blog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>My Recipe Blog</h1>
+  </header>
+  <main>
+    <ul id="recipe-list">
+      <!-- Recipes will be loaded here -->
+    </ul>
+  </main>
+  <script>
+    const recipes = [
+      { name: 'Chocolate Cake', file: 'chocolate-cake.md' },
+      { name: 'Vanilla Ice Cream', file: 'vanilla-ice-cream.md' }
+    ];
+
+    const list = document.getElementById('recipe-list');
+    recipes.forEach(recipe => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<a href="post.html?post=${recipe.file.replace('.md', '')}">${recipe.name}</a>`;
+      list.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
